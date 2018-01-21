@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
+    $users = DB::select('select * from stacks');
+    return $users;
     return view('welcome');
 });
