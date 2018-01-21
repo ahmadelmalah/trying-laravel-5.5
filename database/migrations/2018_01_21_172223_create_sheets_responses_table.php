@@ -15,6 +15,10 @@ class CreateSheetsResponsesTable extends Migration
     {
         Schema::create('sheets_responses', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('sheet_id')->unsigned();
+            $table->foreign('sheet_id')->references('id')->on('sheets')->onDelete('cascade');
             $table->integer('correct');
             $table->integer('wrong');
             $table->timestamps();

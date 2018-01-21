@@ -17,6 +17,7 @@ class CreateSheetsTable extends Migration
             $table->increments('id');
             $table->integer('stack_id')->unsigned();
             $table->foreign('stack_id')->references('id')->on('stacks')->onDelete('cascade');
+            $table->string('question');
             $table->timestamps();
         });
     }

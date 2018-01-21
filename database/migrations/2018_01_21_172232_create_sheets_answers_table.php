@@ -15,6 +15,8 @@ class CreateSheetsAnswersTable extends Migration
     {
         Schema::create('sheets_answers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sheet_id')->unsigned();
+            $table->foreign('sheet_id')->references('id')->on('sheets')->onDelete('cascade');
             $table->string('answer');
             $table->timestamps();
         });
