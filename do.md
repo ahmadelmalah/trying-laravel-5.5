@@ -1,6 +1,10 @@
-## Complete a full seed (user + stack + sheet + asnwer)
+## event
 
-search with Berg
+complete to make user record
+
+## Practise controller?stack=50
+
+build the function first
 
 ## Practise controller?stack=50
 
