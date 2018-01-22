@@ -27,5 +27,7 @@ class CreateUserSheetsRecord
     public function handle(UsersubscripedToStack $event)
     {
         //
+        echo "I caught you, huh!!!";
+        return "I caught you, huh!";
     }
 }

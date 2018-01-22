@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\UsersubscripedToStack;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,9 @@
 
 Route::get('/', function () {
     $users = DB::select('select * from stacks');
+
+    event(new UsersubscripedToStack());
+
     return $users;
     return view('welcome');
 });
