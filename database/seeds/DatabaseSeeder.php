@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         //str_random(10)
         DB::table('users')->insert([
-            'name' => 'Ahmad',
-            'email' => 'ahmedelmalah@hotmail.com',
+            'name' => 'Mr. Demo',
+            'email' => 'demo@gmail.com',
             'password' => bcrypt('123456'),
         ]);
 
@@ -23,31 +23,31 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //sheets
-        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Berg',]);
+        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Berg','id' => 1]);
         DB::table('sheets_answers')->insert(['sheet_id' => 1, 'answer' => 'mountain',]);
 
-        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Turm',]);
+        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Turm','id' => 2]);
         DB::table('sheets_answers')->insert(['sheet_id' => 2, 'answer' => 'tower',]);
 
-        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Gespenst',]);
+        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Gespenst','id' => 3]);
         DB::table('sheets_answers')->insert(['sheet_id' => 3, 'answer' => 'ghost',]);
 
-        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Katze',]);
+        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Katze','id' => 4]);
         DB::table('sheets_answers')->insert(['sheet_id' => 4, 'answer' => 'cat',]);
 
-        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Eule',]);
+        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Eule','id' => 5]);
         DB::table('sheets_answers')->insert(['sheet_id' => 5, 'answer' => 'owl',]);
 
-        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Fledermaus',]);
+        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Fledermaus','id' => 6]);
         DB::table('sheets_answers')->insert(['sheet_id' => 6, 'answer' => 'bat',]);
 
-        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Mäuse',]);
+        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Mäuse','id' => 7]);
         DB::table('sheets_answers')->insert(['sheet_id' => 7, 'answer' => 'mice',]);
 
-        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Mond',]);
+        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Mond','id' => 8]);
         DB::table('sheets_answers')->insert(['sheet_id' => 8, 'answer' => 'moon',]);
 
-        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Uhr',]);
+        DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Uhr','id' => 9]);
         DB::table('sheets_answers')->insert(['sheet_id' => 9, 'answer' => 'clock',]);
     }
 }
