@@ -13,15 +13,18 @@ use App\Events\UsersubscripedToStack;
 |
 */
 
-Route::get('/', function () {
-    $users = DB::select('select * from stacks');
-
-    event(new UsersubscripedToStack());
-
-    return $users;
-    return view('welcome');
+Route::get('/', function(){
+    return view('landing-page');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/stacks', function () {
+    $users = DB::select('select * from stacks');
+
+    event(new UsersubscripedToStack());
+
+    return $users;
+});
