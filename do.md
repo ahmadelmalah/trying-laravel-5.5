@@ -12,7 +12,7 @@ complete to make user record
 
 build the function first
 a function to get the id of the next sheet
-simply, sort by correct, wrong
+simply, sort by correct, wrong, updated_at> to avoid staticity
 
 ## Practise controller?stack=50
 
