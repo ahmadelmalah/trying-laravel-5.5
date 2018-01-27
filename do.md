@@ -1,4 +1,4 @@
-## my stacks page
+## my stacks page (a link in header bar)
 and when you click on one, you see stack score
 add intial score of 9 rows to respoonses seeds
 the a task for startpracticing
