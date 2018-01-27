@@ -49,5 +49,9 @@ class DatabaseSeeder extends Seeder
 
         DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Uhr','id' => 9]);
         DB::table('sheets_answers')->insert(['sheet_id' => 9, 'answer' => 'clock',]);
+
+
+        //user-stack
+        DB::table('users_stacks')->insert(['user_id' => 1,'stack_id' => 1]);
     }
 }
