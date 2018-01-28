@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersStacksTable extends Migration
+class CreateStackUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUsersStacksTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_stacks', function (Blueprint $table) {
+        Schema::create('stack_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -30,6 +30,6 @@ class CreateUsersStacksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_stacks');
+        Schema::dropIfExists('stack_user');
     }
 }

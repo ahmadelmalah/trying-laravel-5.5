@@ -1,7 +1,5 @@
 <?php
 
-use App\Events\UsersubscripedToStack;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/stacks', function () {
-    $users = DB::select('select * from stacks');
+Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
 
-    event(new UsersubscripedToStack());
-
-    return $users;
-});
+//use App\Events\UsersubscripedToStack;
+//event(new UsersubscripedToStack());

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('stacks')->insert([
             'name' => 'Test Stack 1',
+            'description' => 'Stack Desciption'
         ]);
 
         //sheets
@@ -52,6 +53,6 @@ class DatabaseSeeder extends Seeder
 
 
         //user-stack
-        DB::table('users_stacks')->insert(['user_id' => 1,'stack_id' => 1]);
+        DB::table('stack_user')->insert(['user_id' => 1,'stack_id' => 1]);
     }
 }
