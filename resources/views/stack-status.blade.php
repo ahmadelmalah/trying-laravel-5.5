@@ -16,7 +16,9 @@
 
                     <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading">Here's your progress</div>
+                    <div class="panel-heading">
+                    <a href="{{ route('home') }}" class="btn btn-primary btn-block">Let's Practice</a>
+                    </div>
 
                     <!-- Table -->
                     <table class="table">
