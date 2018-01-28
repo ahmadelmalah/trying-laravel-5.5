@@ -1,19 +1,3 @@
-## my stacks page (a link in header bar)
-and when you click on one, you see stack score
-add intial score of 9 rows to respoonses seeds
-the a task for startpracticing
+## Algorithm
 
-
-## event
-
-complete to make user record
-
-## Practise controller?stack=50
-
-build the function first
-a function to get the id of the next sheet
-simply, sort by correct, wrong, updated_at> to avoid staticity
-
-## Practise controller?stack=50
-
-implement the algorithm
+Algorithm is implemented, just build the answering page thar updates record
