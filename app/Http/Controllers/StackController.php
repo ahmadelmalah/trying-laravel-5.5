@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\SheetResponse;
+use App\Stack;
 
 class StackController extends Controller
 {
@@ -27,6 +29,22 @@ class StackController extends Controller
     {
         return view('my-stacks', 
             ['stacks' => Auth::User()->stacks]
+        );
+    }
+
+     /**
+     * Display a Stack status
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getUserStackStatus(Stack $stack)
+    {
+        $sheets_ids = $stack->sheets->pluck('id')->toArray();
+        $sheets_responses = SheetResponse::where('user_id', Auth::User()->id)->
+                            whereIn('sheet_id', $sheets_ids)->get();
+        
+        return view('stack-status', 
+            ['responses' => $sheets_responses]
         );
     }
 

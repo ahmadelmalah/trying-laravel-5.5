@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
+Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status');
 
 Route::get('/test', function(){
     $user = App\User::find(1);
