@@ -23,7 +23,7 @@
                             {{ $stack->description }}
                             </div>
                             <div class="panel-footer">
-                                <button type="button" class="btn btn-default">View My Progress</button>
+                                <a href="{{ route('stack-status', ['stack' => $stack->id]) }}" class="btn btn-default">View Stack Status</a>
                             </div>
                         </div>
                     @endforeach
