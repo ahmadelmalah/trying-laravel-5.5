@@ -10,18 +10,25 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
+use App\User;
+use App\Stack;
+
 class UsersubscripedToStack
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $user;
+    public $stack;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user, Stack $stack)
     {
-        //
+        $this->user = $user;
+        $this->stack = $stack;
     }
 
     /**

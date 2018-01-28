@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\UsersubscripedToStack;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,5 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
 
-//use App\Events\UsersubscripedToStack;
-//event(new UsersubscripedToStack());
+Route::get('/test', function(){
+    $user = App\User::find(1);
+    $stack = App\Stack::find(1);
+    event(new UsersubscripedToStack($user, $stack));
+    return 'done';
+});

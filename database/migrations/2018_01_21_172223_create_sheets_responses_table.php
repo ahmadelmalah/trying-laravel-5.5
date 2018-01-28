@@ -19,8 +19,8 @@ class CreateSheetsResponsesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('sheet_id')->unsigned();
             $table->foreign('sheet_id')->references('id')->on('sheets')->onDelete('cascade');
-            $table->integer('correct');
-            $table->integer('wrong');
+            $table->integer('correct')->default(0);
+            $table->integer('wrong')->default(0);
             $table->timestamps();
         });
     }
