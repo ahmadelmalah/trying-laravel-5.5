@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
 Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status');
 
+Route::get('/practice/{stack}', 'PracticeController@index')->name('practice');
+
 Route::get('/test', function(){
     $user = App\User::find(1);
     $stack = App\Stack::find(1);

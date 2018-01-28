@@ -17,7 +17,7 @@
                     <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading">
-                    <a href="{{ route('home') }}" class="btn btn-primary btn-block">Let's Practice</a>
+                    <a href="{{ route('practice', ['stack' => $stack->id]) }}" class="btn btn-primary btn-block">Let's Practice</a>
                     </div>
 
                     <!-- Table -->

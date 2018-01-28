@@ -44,7 +44,10 @@ class StackController extends Controller
                             whereIn('sheet_id', $sheets_ids)->get();
         
         return view('stack-status', 
-            ['responses' => $sheets_responses]
+            [
+                'stack' => $stack,
+                'responses' => $sheets_responses
+            ]
         );
     }
 
