@@ -1,3 +1,4 @@
 ## Algorithm
 
-Algorithm is implemented, just build the answering page thar updates record
+Implement Submit button logic
+link reveal to its logic (just a good route() link)
