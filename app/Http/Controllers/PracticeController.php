@@ -17,7 +17,7 @@ class PracticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getNextSheet($user, $stack)
+    public function getNextSheet(User $user, Stack $stack)
     {
         $sheets_ids = $stack->sheets->pluck('id')->toArray();
         $sheets_responses = SheetResponse::where('user_id', Auth::User()->id)->
@@ -26,8 +26,8 @@ class PracticeController extends Controller
                             ->orderBy('wrong', 'DESC')
                             ->inRandomOrder()
                             ->first();
-        //return $sheets_responses->id;
-        return Sheet::find($sheets_responses->sheet_id)->question;
+        $sheet = Sheet::find($sheets_responses->sheet_id);
+        return $sheet;
     }
 
     /**
@@ -35,8 +35,35 @@ class PracticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Stack $stack)
+    public function index(Stack $stack, Request $request)
     {
-        return $this->getNextSheet(Auth::User(), $stack);
+        if (null !== $request->input('sheet')){
+            $sheet = Sheet::findOrFail($request->input('sheet'));
+            if ($stack->id != $sheet->stack->id){
+                return redirect()->route('my-stacks');   
+            }
+        }else{
+            $sheet = $this->getNextSheet(Auth::User(), $stack);
+        }
+
+        //Revealing coditions are added here
+        $reveal = false;
+        if($request->input('reveal') == 'true'){
+            $reveal = true;
+        }
+
+        //Initial answer
+        $answer = "";
+        if($reveal == true){
+            $answer = $sheet->answer->answer;
+        }
+
+        return view('practice', 
+            [
+                'sheet' => $sheet,
+                'answer' => $answer,
+                'stack' => $stack,
+            ]
+        );
     }
 }
