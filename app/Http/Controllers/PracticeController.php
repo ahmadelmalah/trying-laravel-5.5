@@ -31,6 +31,24 @@ class PracticeController extends Controller
     }
 
     /**
+     * Answers Checking Methods
+     *
+     * @return Boolean
+     */
+    public static function checkAnswer($response, $answer)
+    {
+        //trim spaces
+        $response = trim($response);
+        $answer = trim($answer);
+
+        //convert both to lower
+        $response = strtolower($response);
+        $answer = strtolower($answer);
+
+        return $response == $answer;
+    }
+
+    /**
      * Getting new question
      *
      * @return \Illuminate\Http\Response
