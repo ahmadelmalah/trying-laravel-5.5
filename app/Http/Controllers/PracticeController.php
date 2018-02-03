@@ -17,7 +17,7 @@ class PracticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getNextSheet(User $user, Stack $stack)
+    public static function getNextSheet(User $user, Stack $stack)
     {
         $sheets_ids = $stack->sheets->pluck('id')->toArray();
         $sheets_responses = SheetResponse::where('user_id', Auth::User()->id)->
@@ -83,5 +83,22 @@ class PracticeController extends Controller
                 'stack' => $stack,
             ]
         );
+    }
+
+    /**
+     * Posting Answer
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postAnswer(Stack $stack, Request $request)
+    {
+        $userResponse =  $request->get('UserResponse');
+        $correctAnswer = Sheet::find($request->get('sheetID'))->answer->answer;
+
+        if ($this::checkAnswer($userResponse, $correctAnswer) == true){
+            return "true";
+        }else{
+            return "wrong";
+        }
     }
 }
