@@ -24,6 +24,7 @@ Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
 Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status');
 
 Route::get('/practice/{stack}', 'PracticeController@index')->name('practice');
+Route::post('/practice/{stack}', 'PracticeController@postAnswer')->name('practice_postanswer');
 
 Route::get('/test', function(){
     $user = App\User::find(1);
