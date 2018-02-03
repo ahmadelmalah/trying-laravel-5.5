@@ -96,9 +96,14 @@ class PracticeController extends Controller
         $correctAnswer = Sheet::find($request->get('sheetID'))->answer->answer;
 
         if ($this::checkAnswer($userResponse, $correctAnswer) == true){
-            return "true";
+            SheetResponse::where('user_id', Auth::User()->id)
+                        ->where('sheet_id', $request->get('sheetID'))
+                        ->increment('correct');
         }else{
-            return "wrong";
+            SheetResponse::where('user_id', Auth::User()->id)
+                        ->where('sheet_id', $request->get('sheetID'))
+                        ->increment('wrong');
         }
+        return redirect()->route('practice', ['stack' => $stack->id]);
     }
 }
