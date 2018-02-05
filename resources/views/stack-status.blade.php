@@ -22,13 +22,14 @@
 
                     <!-- Table -->
                     <table class="table">
-                    <thead> <tr> <th>#</th> <th>Question</th> <th>Correct Answers</th> <th>Wrong Answers</th> </tr></thead>
+                    <thead> <tr> <th>#</th> <th>Question</th> <th>Correct Answers</th> <th>Revealed Answers</th> <th>Wrong Answers</th> </tr></thead>
                     <tbody>
                         @foreach ($responses as $response)
                         <tr>
                             <th scope="row">{{$loop->index+1}}</th>
                             <td>{{$response->sheet->question}}</td>
                             <td>{{$response->correct}}</td>
+                            <td>{{$response->reveal}}</td>
                             <td>{{$response->wrong}}</td>
                         </tr>
                         @endforeach
