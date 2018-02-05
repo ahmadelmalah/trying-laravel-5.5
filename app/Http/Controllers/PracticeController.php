@@ -67,6 +67,9 @@ class PracticeController extends Controller
         //Revealing coditions are added here
         $reveal = false;
         if($request->input('reveal') == 'true'){
+            SheetResponse::where('user_id', Auth::User()->id)
+                        ->where('sheet_id', $request->get('sheet'))
+                        ->increment('reveal');
             $reveal = true;
         }
 
@@ -81,6 +84,7 @@ class PracticeController extends Controller
                 'sheet' => $sheet,
                 'answer' => $answer,
                 'stack' => $stack,
+                'reveal' => $reveal
             ]
         );
     }
