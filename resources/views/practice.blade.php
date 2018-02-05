@@ -26,7 +26,7 @@
 
                                 <div class="input-group">
                                     <input type="text" name="UserResponse" class="form-control" 
-                                    placeholder="Your Answer .." value="{{ $answer }}" autofocus="autofocus" required>
+                                    placeholder="Your Answer .." value="{{ $answer }}" autofocus="autofocus" autocomplete="off" required>
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary" type="submit">Submit & Next</button>
                                     </span>
