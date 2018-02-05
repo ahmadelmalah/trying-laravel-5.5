@@ -22,7 +22,7 @@ class PracticeController extends Controller
         $sheets_ids = $stack->sheets->pluck('id')->toArray();
         $sheets_responses = SheetResponse::where('user_id', Auth::User()->id)->
                             whereIn('sheet_id', $sheets_ids)
-                            ->orderBy('correct', 'ASC')
+                            ->orderByRaw('correct + reveal', 'ASC')
                             ->orderBy('wrong', 'DESC')
                             ->inRandomOrder()
                             ->first();

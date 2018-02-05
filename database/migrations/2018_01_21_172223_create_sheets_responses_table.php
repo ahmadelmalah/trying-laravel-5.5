@@ -20,6 +20,7 @@ class CreateSheetsResponsesTable extends Migration
             $table->integer('sheet_id')->unsigned();
             $table->foreign('sheet_id')->references('id')->on('sheets')->onDelete('cascade');
             $table->integer('correct')->default(0);
+            $table->integer('reveal')->default(0);
             $table->integer('wrong')->default(0);
             $table->timestamps();
         });
