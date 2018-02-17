@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\SheetResponse;
 use App\Stack;
+use App\Sheet;
 
 class StackController extends Controller
 {
@@ -93,9 +94,16 @@ class StackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Stack $stack)
     {
-        return view('stack-management/stack-edit');
+        $sheets = Sheet::where('stack_id', $stack->id)->get();
+        
+        return view('stack-management/stack-edit', 
+            [
+                'stack' => $stack,
+                'sheets' => $sheets
+            ]
+        );
     }
 
     /**
