@@ -92,8 +92,23 @@ class StackController extends Controller
         $stack = new Stack;
         $stack->name = $request->name;
         $stack->description = $request->desc;
+        $stack->type = 1; // Under Development
         $stack->save();
         return redirect()->route('stack-edit', ['stack' => $stack->id]);
+    }
+
+    /**
+     * Publishing a stack
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function publish(Request $request, Stack $stack)
+    {
+        $stack->type = 2;
+        $stack->save();
+
+        return redirect()->route('my-stacks');
     }
 
     /**

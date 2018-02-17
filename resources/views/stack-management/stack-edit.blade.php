@@ -36,7 +36,10 @@
 
                     <div class="panel-footer">
                         <span class="input-group-btn">
-                            <button class="btn btn-primary btn-block" type="submit">The stack is now ready!</button>
+                            <form method="POST" action="{{ route('stack-edit', ['stack' => $stack->id]) }}">
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-success btn-block" type="submit">The stack is now ready!</button>
+                            </form>
                         </span>
                     </div>
                     </div>

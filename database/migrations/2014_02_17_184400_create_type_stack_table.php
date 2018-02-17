@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStacksTable extends Migration
+class CreateTypeStackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateStacksTable extends Migration
      */
     public function up()
     {
-        Schema::create('stacks', function (Blueprint $table) {
+        Schema::create('type_stack', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
-            $table->integer('type')->unsigned();
-            $table->foreign('type')->references('id')->on('type_stack');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 
@@ -30,6 +27,6 @@ class CreateStacksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stacks');
+        Schema::dropIfExists('type_stack');
     }
 }

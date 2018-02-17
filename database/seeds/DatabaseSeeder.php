@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //Look-ups tables
+        DB::table('type_stack')->insert(['id' => 1, 'name' => 'Under Development']);
+        DB::table('type_stack')->insert(['id' => 2, 'name' => 'Private']);
+        DB::table('type_stack')->insert(['id' => 3, 'name' => 'Public']);
+
         //str_random(10)
         DB::table('users')->insert([
             'name' => 'Mr. Demo',
@@ -20,7 +25,8 @@ class DatabaseSeeder extends Seeder
 
         DB::table('stacks')->insert([
             'name' => 'Test Stack 1',
-            'description' => 'Stack Desciption'
+            'description' => 'Stack Desciption',
+            'type' => 2
         ]);
 
         //sheets

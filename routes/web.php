@@ -22,9 +22,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
 Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status');
+
+//Stack creatiion routes
 Route::get('/stack-create', 'StackController@create')->name('stack-create');
 Route::post('/stack-create', 'StackController@store')->name('stack-store');
 Route::get('/stack-edit/{stack}', 'StackController@edit')->name('stack-edit');
+Route::post('/stack-edit/{stack}', 'StackController@publish')->name('stack-publish');
 Route::get('/sheet-create/{stack}', 'SheetController@create')->name('sheet-create');
 Route::post('/sheet-create/{stack}', 'SheetController@store')->name('sheet-store');
 

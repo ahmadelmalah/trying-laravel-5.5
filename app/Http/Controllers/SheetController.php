@@ -49,7 +49,22 @@ class SheetController extends Controller
         $sheet_answer->sheet_id = $sheet->id;
         $sheet_answer->answer = $request->answer;
         $sheet_answer->save();
-        return $sheet_answer->id;
+
+        return redirect()->route('stack-edit', ['stack' => $stack->id]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function publish(Request $request, Stack $stack)
+    {
+        $stack->type = 2;
+        $stack->save();
+
+        return redirect()->route('my-stacks');
     }
 
     /**
