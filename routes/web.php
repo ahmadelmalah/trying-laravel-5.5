@@ -22,7 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
 Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status');
-Route::get('/create-stack', 'StackController@create')->name('create-stack');
+Route::get('/stack-create', 'StackController@create')->name('stack-create');
+Route::get('/stack-edit/{stack}', 'StackController@edit')->name('stack-edit');
 
 Route::get('/practice/{stack}', 'PracticeController@index')->name('practice');
 Route::post('/practice/{stack}', 'PracticeController@postAnswer')->name('practice_postanswer');

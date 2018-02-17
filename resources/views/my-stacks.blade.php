@@ -7,6 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">My Stacks</div>
 
+                <a href="{{ route('stack-create') }}" class="btn btn-primary">Create a new stack</a>
+
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">

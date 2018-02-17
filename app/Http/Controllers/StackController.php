@@ -58,7 +58,7 @@ class StackController extends Controller
      */
     public function create()
     {
-        return "want to ceate a stack?";
+        return view('stack-management/stack-create');
     }
 
     /**
@@ -91,7 +91,7 @@ class StackController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('stack-management/stack-edit');
     }
 
     /**
