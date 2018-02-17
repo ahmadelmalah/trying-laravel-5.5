@@ -11,3 +11,9 @@ create type_stack
 0: underdevelopment
 1: private
 2: public
+
+## Validation
+creating stack, sheet happy path only
+you need to add
+ 1-user authorization
+ 2-stack type=0

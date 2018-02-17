@@ -17,7 +17,7 @@
                     <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading">
-                    <a href="{{ route('practice', ['stack' => $stack->id]) }}" class="btn btn-primary btn-block">Add new sheet</a>
+                    <a href="{{ route('sheet-create', ['stack' => $stack->id]) }}" class="btn btn-primary btn-block">Add new sheet</a>
                     </div>
 
                     <!-- Table -->
