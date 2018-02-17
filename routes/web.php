@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
 Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status');
 Route::get('/stack-create', 'StackController@create')->name('stack-create');
+Route::post('/stack-create', 'StackController@store')->name('stack-store');
 Route::get('/stack-edit/{stack}', 'StackController@edit')->name('stack-edit');
 
 Route::get('/practice/{stack}', 'PracticeController@index')->name('practice');

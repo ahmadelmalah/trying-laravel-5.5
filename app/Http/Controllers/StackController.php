@@ -69,7 +69,7 @@ class StackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->input('title') . $request->input('desc');
     }
 
     /**
