@@ -73,7 +73,7 @@ class StackController extends Controller
         $stack->name = $request->name;
         $stack->description = $request->desc;
         $stack->save();
-        return $request->input('name') . $request->input('desc');
+        return redirect()->route('stack-edit', ['stack' => $stack->id]);
     }
 
     /**
