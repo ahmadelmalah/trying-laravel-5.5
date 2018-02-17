@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use DB;
 use App\SheetResponse;
 use App\Stack;
 use App\Sheet;
+use App\User;
 
 class StackController extends Controller
 {
@@ -43,13 +45,30 @@ class StackController extends Controller
         $sheets_ids = $stack->sheets->pluck('id')->toArray();
         $sheets_responses = SheetResponse::where('user_id', Auth::User()->id)->
                             whereIn('sheet_id', $sheets_ids)->get();
-        
+    
         return view('stack-status', 
             [
                 'stack' => $stack,
-                'responses' => $sheets_responses
+                'responses' => $sheets_responses,
+                'percentage' => $this->getPercentage(Auth::User(), $stack)
             ]
         );
+    }
+
+    /**
+     * Get stack percentage
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getPercentage(User $user, Stack $stack)
+    {
+        $sheets_ids = $stack->sheets->pluck('id')->toArray();
+        $sheets_ids = '(' . implode(",", $sheets_ids) . ')';
+        $sql = "SELECT count(id) as total, sum(case when correct > 0 then 1 else 0 end) as correct 
+                FROM `sheets_responses` 
+                WHERE `user_id` = {$user->id} AND `sheet_id` IN {$sheets_ids}";
+        $results = DB::select($sql);
+        return round(100*$results[0]->correct/$results[0]->total);
     }
 
     /**
