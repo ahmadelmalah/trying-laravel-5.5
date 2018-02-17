@@ -58,7 +58,7 @@ class StackController extends Controller
      */
     public function create()
     {
-        //
+        return "want to ceate a stack?";
     }
 
     /**
