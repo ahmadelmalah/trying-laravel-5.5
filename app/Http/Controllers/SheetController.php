@@ -54,20 +54,6 @@ class SheetController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function publish(Request $request, Stack $stack)
-    {
-        $stack->type = 2;
-        $stack->save();
-
-        return redirect()->route('my-stacks');
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
