@@ -69,7 +69,11 @@ class StackController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->input('title') . $request->input('desc');
+        $stack = new Stack;
+        $stack->name = $request->name;
+        $stack->description = $request->desc;
+        $stack->save();
+        return $request->input('name') . $request->input('desc');
     }
 
     /**

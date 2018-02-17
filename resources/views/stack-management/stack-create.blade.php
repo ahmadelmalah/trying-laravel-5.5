@@ -22,7 +22,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="input-group">
-                                    <input type="text" name="title" class="form-control" 
+                                    <input type="text" name="name" class="form-control" 
                                     placeholder="Stack title .." autofocus="autofocus"  required>
                                 </div>
                                 <div class="input-group">
