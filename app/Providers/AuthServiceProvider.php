@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('update-stack', function ($user, $stack) {
+            return $user->id == $stack->created_by;
+        });
+
         //
     }
 }
