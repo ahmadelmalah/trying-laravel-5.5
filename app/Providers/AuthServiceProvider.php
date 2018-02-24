@@ -31,6 +31,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $stack->created_by;
         });
 
+        Gate::define('stack-is-updatable', function ($user, $stack) {
+            return $stack->type == 1;
+        });
+
         Gate::define('use-stack', function ($user, $stack) {
             return count(StackUser::where('stack_id',$stack->id)->where('user_id', $user->id)->get()) == 1;
         });
