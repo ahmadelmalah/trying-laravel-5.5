@@ -14,6 +14,12 @@
                         </div>
                     @endif
 
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                     <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading">

@@ -105,6 +105,10 @@ class StackController extends Controller
      */
     public function publish(Request $request, Stack $stack)
     {
+        if (count($stack->sheets) < 3){
+            return redirect()->route('stack-edit', ['stack' => $stack->id])
+                    ->with('error', 'Stack needs at least 3 sheets');
+        }
         $stack->type = 2;
         $stack->save();
 
