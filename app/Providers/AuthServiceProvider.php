@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+use App\StackUser;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -27,6 +29,10 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('update-stack', function ($user, $stack) {
             return $user->id == $stack->created_by;
+        });
+
+        Gate::define('use-stack', function ($user, $stack) {
+            return count(StackUser::where('stack_id',$stack->id)->where('user_id', $user->id)->get()) == 1;
         });
 
         //

@@ -21,18 +21,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
-Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status');
 
 //Stack creatiion routes
 Route::get('/stack-create', 'StackController@create')->name('stack-create');
 Route::post('/stack-create', 'StackController@store')->name('stack-store');
 Route::get('/stack-edit/{stack}', 'StackController@edit')->name('stack-edit')->middleware('can:update-stack,stack');
-Route::post('/stack-edit/{stack}', 'StackController@publish')->name('stack-publish');
+Route::post('/stack-edit/{stack}', 'StackController@publish')->name('stack-publish')->middleware('can:update-stack,stack');
 Route::post('/stack-clear/{stack}', 'StackController@clear')->name('stack-clear');
-Route::get('/sheet-create/{stack}', 'SheetController@create')->name('sheet-create');
-Route::post('/sheet-create/{stack}', 'SheetController@store')->name('sheet-store');
+Route::get('/sheet-create/{stack}', 'SheetController@create')->name('sheet-create')->middleware('can:update-stack,stack');
+Route::post('/sheet-create/{stack}', 'SheetController@store')->name('sheet-store')->middleware('can:update-stack,stack');
 
-Route::get('/practice/{stack}', 'PracticeController@index')->name('practice');
+Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status')->middleware('can:use-stack,stack');
+Route::get('/practice/{stack}', 'PracticeController@index')->name('practice')->middleware('can:use-stack,stack');
 Route::post('/practice/{stack}', 'PracticeController@postAnswer')->name('practice_postanswer');
 
 Route::get('/test', function(){

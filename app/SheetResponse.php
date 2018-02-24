@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class SheetResponse extends Model
 {
-    //
     protected $table = 'sheets_responses';
 
     public function sheet()
