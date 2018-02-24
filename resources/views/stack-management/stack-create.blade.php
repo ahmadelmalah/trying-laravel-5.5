@@ -21,11 +21,11 @@
                                 <h3 class="panel-title">Stack details</h3>
                             </div>
                             <div class="panel-body">
-                                <div class="input-group">
+                                <div class="form-group">
                                     <input type="text" name="name" class="form-control" 
                                     placeholder="Stack title .." autofocus="autofocus"  required>
                                 </div>
-                                <div class="input-group">
+                                <div class="form-group">
                                     <input type="text" name="desc" class="form-control" 
                                     placeholder="Stack description .." required>
                                 </div>

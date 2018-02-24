@@ -21,11 +21,11 @@
                                 <h3 class="panel-title">Sheet details</h3>
                             </div>
                             <div class="panel-body">
-                                <div class="input-group">
+                                <div class="form-group">
                                     <input type="text" name="question" class="form-control" 
                                     placeholder="Sheet question .." autofocus="autofocus"  required>
                                 </div>
-                                <div class="input-group">
+                                <div class="form-group">
                                     <input type="text" name="answer" class="form-control" 
                                     placeholder="Sheet answer .." required>
                                 </div>
