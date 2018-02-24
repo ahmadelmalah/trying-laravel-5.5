@@ -19,6 +19,8 @@ class CreateStacksTable extends Migration
             $table->string('description');
             $table->integer('type')->unsigned();
             $table->foreign('type')->references('id')->on('type_stack');
+            $table->integer('created_by')->unsigned();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
