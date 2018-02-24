@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Learnsheets'),
+    'name' => env('APP_NAME', 'Lessontrainer'),
 
     /*
     |--------------------------------------------------------------------------
