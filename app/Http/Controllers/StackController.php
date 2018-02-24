@@ -152,6 +152,24 @@ class StackController extends Controller
         );
     }
 
+     /**
+     * clearing all answers from a stack for the current user
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function clear(Stack $stack)
+    {
+        $sheets_ids = $stack->sheets->pluck('id')->toArray();
+        $sheets_responses = SheetResponse::whereIn('sheet_id', $sheets_ids)
+                            ->update([
+                                'correct' => 0,
+                                'reveal' => 0,
+                                'wrong' => 0
+                            ]);
+        return redirect()->route('stack-status', ['stack' => $stack->id]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
