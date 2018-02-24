@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
         DB::table('stacks')->insert([
             'name' => 'Test Stack 1',
             'description' => 'Stack Desciption',
-            'type' => 2
+            'type' => 2,
+            'created_by' => 1
         ]);
 
         //sheets
