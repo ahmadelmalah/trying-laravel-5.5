@@ -10,5 +10,3 @@ creating stack, sheet happy path only
 you need to add
  1-user authorization
  2-stack type=0
-
- stack needs at least 3 sheets

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Events\UsersubscripedToStack;
+
 use DB;
 use App\SheetResponse;
 use App\Stack;
@@ -105,12 +107,18 @@ class StackController extends Controller
      */
     public function publish(Request $request, Stack $stack)
     {
+        //Validation
         if (count($stack->sheets) < 3){
             return redirect()->route('stack-edit', ['stack' => $stack->id])
                     ->with('error', 'Stack needs at least 3 sheets');
         }
+        //Publishing
         $stack->type = 2;
         $stack->save();
+        //Assigning the stack to the user and fire the event
+        DB::table('stack_user')->insert(['user_id' => Auth::User()->id,'stack_id' => $stack->id]);
+        event(new UsersubscripedToStack(Auth::User(), $stack));
+
 
         return redirect()->route('my-stacks');
     }
