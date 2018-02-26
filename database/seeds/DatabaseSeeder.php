@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         DB::table('stacks')->insert([
             'name' => 'Test Stack 1',
             'description' => 'Stack Desciption',
-            'type' => 2,
+            'type' => 3,
             'created_by' => 1
         ]);
 
@@ -57,9 +57,5 @@ class DatabaseSeeder extends Seeder
 
         DB::table('sheets')->insert(['stack_id' => 1,'question' => 'Uhr','id' => 9]);
         DB::table('sheets_answers')->insert(['sheet_id' => 9, 'answer' => 'clock',]);
-
-
-        //user-stack
-        DB::table('stack_user')->insert(['user_id' => 1,'stack_id' => 1]);
     }
 }

@@ -119,6 +119,7 @@ class StackController extends Controller
         $stack->name = $request->name;
         $stack->description = $request->desc;
         $stack->type = 1; // Under Development
+        $stack->price = $request->price;
         $stack->created_by = Auth::User()->id; 
         $stack->save();
         return redirect()->route('stack-edit', ['stack' => $stack->id]);

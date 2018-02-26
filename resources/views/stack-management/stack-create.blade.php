@@ -23,11 +23,17 @@
                             <div class="panel-body">
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" 
-                                    placeholder="Stack title .." autofocus="autofocus"  required>
+                                    placeholder="Stack title .." autofocus="autofocus" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="desc" class="form-control" 
-                                    placeholder="Stack description .." required>
+                                    placeholder="Stack description .." autocomplete="off" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <input type="number" step="0.01" name="price" class="form-control" 
+                                    placeholder="Stack price .." autocomplete="off" required>
+                                    <span class="input-group-addon" id="sizing-addon3">€</span>
                                 </div>
                             </div>
                             <div class="panel-footer">
