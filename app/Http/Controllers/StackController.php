@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Events\UsersubscripedToStack;
+use App\Events\UserUnsubscripedFromStack;
 
 use DB;
 use App\SheetResponse;
 use App\Stack;
 use App\Sheet;
 use App\User;
+use App\StackUser;
 
 class StackController extends Controller
 {
@@ -161,7 +163,7 @@ class StackController extends Controller
     }
 
     /**
-     * Making a stack public
+     * Subscribe to a stack
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -171,6 +173,22 @@ class StackController extends Controller
         //Assigning the stack to the user and fire the event
         DB::table('stack_user')->insert(['user_id' => Auth::User()->id,'stack_id' => $stack->id]);
         event(new UsersubscripedToStack(Auth::User(), $stack));
+        return redirect()->route('my-stacks');
+    }
+
+    /**
+     * Unsubscribe from a stack
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function unsubscribe(Request $request, Stack $stack)
+    {
+        //removing the stack from the user and fire the event
+        StackUser::where('user_id', Auth()->User()->id)
+        ->where('stack_id', $stack->id)
+        ->delete();
+        event(new UserUnsubscripedFromStack(Auth::User(), $stack));
         return redirect()->route('my-stacks');
     }
 

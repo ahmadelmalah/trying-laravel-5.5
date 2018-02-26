@@ -8,6 +8,10 @@
     <div class="panel-footer">
         @can('use-stack', $stack)
         <a href="{{ route('stack-status', ['stack' => $stack->id]) }}" class="btn btn-default">View Stack Status</a>
+        <form style="display:inline;" method="POST" action="{{ route('stack-unsubscribe', ['stack' => $stack->id]) }}">
+            {{ csrf_field() }}
+            <button type="submit" class="btn btn-default" type="submit">Unsubscribe</button>
+        </form>
         @else
             <form style="display:inline;" method="POST" action="{{ route('stack-subscribe', ['stack' => $stack->id]) }}">
             {{ csrf_field() }}
