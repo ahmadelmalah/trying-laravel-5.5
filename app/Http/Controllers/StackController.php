@@ -54,7 +54,7 @@ class StackController extends Controller
      */
     public function marketplace()
     {
-        return view('my-stacks', 
+        return view('marketplace', 
             ['stacks' => Stack::where('type', 3)->get()]
         );
     }
