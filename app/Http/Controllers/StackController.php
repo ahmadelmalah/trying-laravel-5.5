@@ -154,15 +154,23 @@ class StackController extends Controller
      */
     public function makepublic(Request $request, Stack $stack)
     {
-        //Validation
-        // if (count($stack->sheets) < 3){
-        //     return redirect()->route('stack-edit', ['stack' => $stack->id])
-        //             ->with('error', 'Stack needs at least 3 sheets');
-        // }
-        //Publishing
         $stack->type = 3;
         $stack->save();
 
+        return redirect()->route('my-stacks');
+    }
+
+    /**
+     * Making a stack public
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function subscribe(Request $request, Stack $stack)
+    {
+        //Assigning the stack to the user and fire the event
+        DB::table('stack_user')->insert(['user_id' => Auth::User()->id,'stack_id' => $stack->id]);
+        event(new UsersubscripedToStack(Auth::User(), $stack));
         return redirect()->route('my-stacks');
     }
 
