@@ -135,6 +135,26 @@ class StackController extends Controller
     }
 
     /**
+     * Making a stack public
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function makepublic(Request $request, Stack $stack)
+    {
+        //Validation
+        // if (count($stack->sheets) < 3){
+        //     return redirect()->route('stack-edit', ['stack' => $stack->id])
+        //             ->with('error', 'Stack needs at least 3 sheets');
+        // }
+        //Publishing
+        $stack->type = 3;
+        $stack->save();
+
+        return redirect()->route('my-stacks');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
