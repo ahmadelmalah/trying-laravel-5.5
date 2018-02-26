@@ -32,6 +32,7 @@ Route::post('/sheet-create/{stack}', 'SheetController@store')->name('sheet-store
 Route::post('/stack-clear/{stack}', 'StackController@clear')->name('stack-clear');
 //Sharing & searching stacks
 Route::post('/stack-makepublic/{stack}', 'StackController@makepublic')->name('stack-makepublic')->middleware('can:update-stack,stack')->middleware('can:stack-be-public,stack');
+Route::get('/marketplace', 'StackController@marketplace')->name('marketplace');
 
 //Using stacks routes
 Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status')->middleware('can:use-stack,stack');

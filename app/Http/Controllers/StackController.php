@@ -47,6 +47,18 @@ class StackController extends Controller
         );
     }
 
+    /**
+     * Display a listing of public stacks
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function marketplace()
+    {
+        return view('my-stacks', 
+            ['stacks' => Stack::where('type', 3)->get()]
+        );
+    }
+
      /**
      * Display a Stack status
      *
