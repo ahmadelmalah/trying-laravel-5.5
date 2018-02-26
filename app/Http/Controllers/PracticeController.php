@@ -13,6 +13,16 @@ use App\SheetResponse;
 class PracticeController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Algorithm lives here
      *
      * @return \Illuminate\Http\Response
