@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\UsersubscripedToStack;
+use App\Events\UserUnsubscripedFromStack;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,5 +45,12 @@ Route::get('/test', function(){
     $user = App\User::find(1);
     $stack = App\Stack::find(1);
     event(new UsersubscripedToStack($user, $stack));
+    return 'done';
+});
+
+Route::get('/test2', function(){
+    $user = App\User::find(1);
+    $stack = App\Stack::find(1);
+    event(new UserUnsubscripedFromStack($user, $stack));
     return 'done';
 });

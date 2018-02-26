@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UsersubscripedToStack' => [
             'App\Listeners\CreateUserSheetsRecord',
         ],
+        'App\Events\UserUnsubscripedFromStack' => [
+            'App\Listeners\RemoveUserSheetsRecord',
+        ],
     ];
 
     /**
