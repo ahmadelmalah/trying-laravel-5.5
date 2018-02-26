@@ -1,7 +1,4 @@
 <?php
-
-use App\Events\UsersubscripedToStack;
-use App\Events\UserUnsubscripedFromStack;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,17 +38,3 @@ Route::get('/marketplace', 'StackController@marketplace')->name('marketplace');
 Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status')->middleware('can:use-stack,stack');
 Route::get('/practice/{stack}', 'PracticeController@index')->name('practice')->middleware('can:use-stack,stack');
 Route::post('/practice/{stack}', 'PracticeController@postAnswer')->name('practice_postanswer');
-
-Route::get('/test', function(){
-    $user = App\User::find(1);
-    $stack = App\Stack::find(1);
-    event(new UsersubscripedToStack($user, $stack));
-    return 'done';
-});
-
-Route::get('/test2', function(){
-    $user = App\User::find(1);
-    $stack = App\Stack::find(1);
-    event(new UserUnsubscripedFromStack($user, $stack));
-    return 'done';
-});
