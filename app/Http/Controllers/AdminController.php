@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Stack;
 
 class AdminController extends Controller
 {
@@ -13,7 +15,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('cp.index');
+        return view('cp.index', [
+            'stacks_under_dev' => Stack::where('type', 1)->count(),
+            'stacks_private' => Stack::where('type', 2)->count(),
+            'stacks_public' => Stack::where('type', 3)->count(),
+            'users' => User::all()->count(),
+        ]);
     }
 
     /**
