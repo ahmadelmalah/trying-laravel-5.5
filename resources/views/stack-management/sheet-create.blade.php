@@ -16,7 +16,6 @@
 
                     <form method="POST" action="{{ route('sheet-store', ['stack' => $stack->id]) }}">
                         {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="PUT">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Sheet details</h3>
