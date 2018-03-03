@@ -13,7 +13,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return "yes you're admin";
+        return view('cp.index');
     }
 
     /**
