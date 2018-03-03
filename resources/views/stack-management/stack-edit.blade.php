@@ -30,13 +30,23 @@
 
                         <!-- Table -->
                         <table class="table">
-                        <thead> <tr> <th>#</th> <th>Question</th> <th>Correct Answer</th> </tr></thead>
+                        <thead> <tr> <th>#</th> <th>Question</th> <th>Correct Answer</th><th></th></tr></thead>
                         <tbody>
                             @foreach ($sheets as $sheet)
                             <tr>
-                                <th scope="row">{{$loop->index+1}}</th>
+                                <td>{{$loop->index+1}}</td>
                                 <td>{{$sheet->question}}</td>
                                 <td>{{$sheet->answer->answer}}</td>
+                                <td style="width: 140px;">
+                                    <form style="display:inline;" method="POST" action="{{ route('stack-edit', ['stack' => $stack->id]) }}">
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-info btn-sm" style="background-color: #5bc0de;" type="submit">Edit</button>
+                                    </form>
+                                    <form style="display:inline;" method="POST" action="{{ route('stack-edit', ['stack' => $stack->id]) }}">
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
