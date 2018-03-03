@@ -38,11 +38,11 @@
                                 <td>{{$sheet->question}}</td>
                                 <td>{{$sheet->answer->answer}}</td>
                                 <td style="width: 140px;">
-                                    <form style="display:inline;" method="POST" action="{{ route('stack-edit', ['stack' => $stack->id]) }}">
-                                    {{ csrf_field() }}
+                                    <form style="display:inline;" method="GET" action="{{ route('sheet-edit', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}">
                                     <button type="submit" class="btn btn-info btn-sm" style="background-color: #5bc0de;" type="submit">Edit</button>
                                     </form>
-                                    <form style="display:inline;" method="POST" action="{{ route('stack-edit', ['stack' => $stack->id]) }}">
+                                    <form style="display:inline;" method="POST" action="{{ route('sheet-destroy', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}"
+                                        onsubmit="return confirm('Delete this sheet?');">
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-danger btn-sm" type="submit">Delete</button>
                                     </form>

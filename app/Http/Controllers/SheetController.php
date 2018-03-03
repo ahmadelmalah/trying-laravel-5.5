@@ -80,9 +80,12 @@ class SheetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Stack $stack, Sheet $sheet)
     {
-        //
+        return view('stack-management/sheet-edit', [
+            'stack' => $stack,
+            'sheet' => $sheet
+        ]);
     }
 
     /**
@@ -92,9 +95,13 @@ class SheetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Stack $stack, Sheet $sheet)
     {
-        //
+        $sheet->question = $request->question;
+        $sheet->answer->answer = $request->answer;
+        $sheet->save();
+        $sheet->answer->save();
+        return redirect()->route('stack-edit', ['stack' => $stack->id]);
     }
 
     /**
@@ -103,8 +110,9 @@ class SheetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Stack $stack, Sheet $sheet)
     {
-        //
+        Sheet::destroy($sheet->id);
+        return redirect()->route('stack-edit', ['stack' => $stack->id]);
     }
 }
