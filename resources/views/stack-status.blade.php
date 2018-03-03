@@ -55,7 +55,8 @@
 
                     <div class="panel-footer">
                         <span class="input-group-btn">
-                            <form method="POST" action="{{ route('stack-clear', ['stack' => $stack->id]) }}">
+                            <form method="POST" action="{{ route('stack-clear', ['stack' => $stack->id]) }}"
+                                onsubmit="return confirm('Delete all progress from this stack?');">
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-block" type="submit">Clear my answers and start over!</button>
                             </form>
