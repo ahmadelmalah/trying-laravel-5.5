@@ -1,6 +1,6 @@
 @extends('layouts.typical')
 
-@section('content_title', 'My Stacks')
+@section('content_title', 'Stacks created by you')
 
 @section('content_content')
 <div class="panel panel-default">

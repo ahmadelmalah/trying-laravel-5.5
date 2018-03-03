@@ -45,7 +45,7 @@ class StackController extends Controller
     public function getUserStacks()
     {
         return view('my-stacks', 
-            ['stacks' => Auth::User()->stacks]
+        ['stacks' => Stack::where('created_by', Auth::User()->id)->get()]
         );
     }
 
@@ -58,6 +58,18 @@ class StackController extends Controller
     {
         return view('marketplace', 
             ['stacks' => Stack::where('type', 3)->get()]
+        );
+    }
+
+    /**
+     * Display a listing of User subscriptions
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function subscriptions()
+    {
+        return view('subscriptions', 
+        ['stacks' => Auth::User()->stacks]
         );
     }
 

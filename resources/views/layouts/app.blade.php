@@ -47,7 +47,8 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                         <li class="{{ Route::current()->getName() == 'marketplace' ? ' active' : '' }}"><a href="{{ route('marketplace') }}">Explore Marketplace</a></li>
-                            <li class="{{ Route::current()->getName() == 'my-stacks' ? ' active' : '' }}"><a href="{{ route('my-stacks') }}">My Stacks</a></li>
+                        <li class="{{ Route::current()->getName() == 'subscriptions' ? ' active' : '' }}"><a href="{{ route('subscriptions') }}">Subscriptions</a></li>
+                        <li class="{{ Route::current()->getName() == 'my-stacks' ? ' active' : '' }}"><a href="{{ route('my-stacks') }}">My Stacks</a></li>
                             
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">

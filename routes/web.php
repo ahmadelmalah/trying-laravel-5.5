@@ -19,6 +19,8 @@ Auth::routes();
 //General routes
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
+Route::get('/marketplace', 'StackController@marketplace')->name('marketplace');
+Route::get('/subscriptions', 'StackController@subscriptions')->name('subscriptions');
 
 //Creating/updating stacks routes
 Route::get('/stack-create', 'StackController@create')->name('stack-create');
@@ -36,7 +38,6 @@ Route::post('/sheet-delete/{stack}/{sheet}', 'SheetController@destroy')->name('s
 Route::post('/stack-makepublic/{stack}', 'StackController@makepublic')->name('stack-makepublic')->middleware('can:update-stack,stack')->middleware('can:stack-be-public,stack');
 Route::post('/stack-subscribe/{stack}', 'StackController@subscribe')->name('stack-subscribe');
 Route::post('/stack-unsubscribe/{stack}', 'StackController@unsubscribe')->name('stack-unsubscribe');
-Route::get('/marketplace', 'StackController@marketplace')->name('marketplace');
 
 //Using stacks routes
 Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('stack-status')->middleware('can:use-stack,stack');
