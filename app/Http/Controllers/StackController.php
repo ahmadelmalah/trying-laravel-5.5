@@ -86,7 +86,7 @@ class StackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getPercentage(User $user, Stack $stack)
+    public static function getPercentage(User $user, Stack $stack)
     {
         $sheets_ids = $stack->sheets->pluck('id')->toArray();
         $sheets_ids = '(' . implode(",", $sheets_ids) . ')';

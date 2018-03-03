@@ -95,7 +95,7 @@ class PracticeController extends Controller
                 'answer' => $answer,
                 'stack' => $stack,
                 'reveal' => $reveal,
-                'percentage' => $this->getPercentage(Auth::User(), $stack)
+                'percentage' => StackController::getPercentage(Auth::User(), $stack)
             ]
         );
     }

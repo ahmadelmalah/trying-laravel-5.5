@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                        @include('StackProgressComponent')
                         <form method="POST" action="{{ route('practice_postanswer', ['stack' => $stack->id]) }}">
                         {{ csrf_field() }}
                         <input type="hidden" name="sheetID" value="{{ $sheet->id }}" />
