@@ -27,6 +27,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('have-admin-auth', function ($user) {
+            //need to be updated
+            return $user->id == 1;
+        });
+
         Gate::define('update-stack', function ($user, $stack) {
             return $user->id == $stack->created_by;
         });

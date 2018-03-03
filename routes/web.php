@@ -44,3 +44,12 @@ Route::get('/stackstatus/{stack}', 'StackController@getUserStackStatus')->name('
 Route::get('/practice/{stack}', 'PracticeController@index')->name('practice')->middleware('can:use-stack,stack');
 Route::post('/practice/{stack}', 'PracticeController@postAnswer')->name('practice_postanswer')->middleware('can:use-stack,stack');
 Route::post('/stack-clear/{stack}', 'StackController@clear')->name('stack-clear')->middleware('can:use-stack,stack');
+
+//Admin Area
+Route::prefix('/cp')->middleware(['can:have-admin-auth'])->group(function () {
+    Route::get('', 'AdminController@index');
+
+    Route::get('test', function () {
+        return "yes";
+    });
+});
