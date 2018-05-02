@@ -25,10 +25,35 @@
                                     <input type="text" name="question" class="form-control" 
                                     placeholder="Sheet question .." autofocus="autofocus"  required>
                                 </div>
+                                <!-- Answer part -->
                                 <div class="form-group">
-                                    <input type="text" name="answer" class="form-control" 
-                                    placeholder="Sheet answer .." required>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" name="options" id="optOpen" autocomplete="off" checked onchange="activateOpenText()"> Open Text
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="optMulti" autocomplete="off" onchange="activateMulti()"> Multiple Choice
+                                        </label>
+                                    </div>
                                 </div>
+      
+                                <!-- OpenText Panel -->
+                                <div class="form-group" id="panelOpenText">
+                                    <input type="text" name="answer" class="form-control" 
+                                    placeholder="Sheet answer ..">
+                                </div>
+                                <!-- End of OpenText Panel -->
+                                <!-- OpenText Panel -->
+                                <div class="form-group form-inline" id="panelMulti" style="display: none;">
+                                <p><button type="button" class="btn btn-default" onclick="addMulti()">More fields</button></p>
+                                    <p>
+                                    <input type="text" name="answer" class="form-control">
+                                    <select class="form-control"><option value="selected" selected>Must be selected</option><option value="unselected">Must be unselected</option></select> 
+                                    </p>
+                                </div>
+                                <!-- End of OpenText Panel -->
+
+                                <!-- End of answer part -->
                             </div>
                             <div class="panel-footer">
                                 <span class="input-group-btn">
@@ -42,4 +67,26 @@
         </div>
     </div>
 </div>
+
+<script>
+i=1;
+function activateOpenText(){
+    $("#panelOpenText").show()
+    $("#panelMulti").hide()
+    
+}
+function activateMulti(){
+    $("#panelOpenText").hide()
+    $("#panelMulti").show()
+}
+function addMulti(){
+    var appendFields = '<p>';
+    appendFields += '<input type="text" name="answer" class="form-control">';
+    appendFields += '<select class="form-control"><option value="selected" selected>Must be selected</option><option value="unselected">Must be unselected</option></select>';
+    appendFields += '</p>';
+    $("#panelMulti").append(appendFields);
+    i++;
+}
+</script>
+
 @endsection
