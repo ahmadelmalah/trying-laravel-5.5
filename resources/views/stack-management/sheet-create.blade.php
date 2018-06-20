@@ -36,7 +36,10 @@
                                         </label>
                                     </div>
                                 </div>
-      
+                                <!-- Answer Type -->
+                                    <input type="hidden" id="answerType" name="answerType" value="open">
+                                <!-- End of Answer Type -->
+
                                 <!-- OpenText Panel -->
                                 <div class="form-group" id="panelOpenText">
                                     <input type="text" name="answer" class="form-control" 
@@ -73,11 +76,13 @@ i=1;
 function activateOpenText(){
     $("#panelOpenText").show()
     $("#panelMulti").hide()
+    $("#answerType").val("open")
     
 }
 function activateMulti(){
     $("#panelOpenText").hide()
     $("#panelMulti").show()
+    $("#answerType").val("multi")
 }
 function addMulti(){
     var appendFields = '<p>';

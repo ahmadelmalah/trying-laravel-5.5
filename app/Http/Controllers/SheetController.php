@@ -50,8 +50,13 @@ class SheetController extends Controller
      */
     public function store(Request $request, Stack $stack)
     {
-        // $request->multianswer . 
-        return $request->multianswercheck;
+        //Getting answer based on its type, open text or multiple choices
+        if($request->answerType == "open"){
+            $answer = $request->answer;
+        }else if($request->answerType == "multi"){
+            $answer = json_encode(array_combine($request->multianswer, $request->multianswercheck));
+        }
+
         $sheet = new Sheet();
         $sheet->stack_id = $stack->id;
         $sheet->question = $request->question;
@@ -59,7 +64,7 @@ class SheetController extends Controller
 
         $sheet_answer = new SheetAnswer();
         $sheet_answer->sheet_id = $sheet->id;
-        $sheet_answer->answer = $request->answer;
+        $sheet_answer->answer = $answer;
         $sheet_answer->save();
 
         return redirect()->route('stack-edit', ['stack' => $stack->id]);
