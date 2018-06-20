@@ -43,15 +43,15 @@
                                     placeholder="Sheet answer ..">
                                 </div>
                                 <!-- End of OpenText Panel -->
-                                <!-- OpenText Panel -->
+                                <!-- MultipleChoice Panel -->
                                 <div class="form-group form-inline" id="panelMulti" style="display: none;">
                                 <p><button type="button" class="btn btn-default" onclick="addMulti()">More fields</button></p>
                                     <p>
-                                    <input type="text" name="answer" class="form-control">
-                                    <select class="form-control"><option value="selected" selected>Must be selected</option><option value="unselected">Must be unselected</option></select> 
+                                    <input type="text" name="multianswer[]" class="form-control">
+                                    <select name="multianswercheck[]" class="form-control"><option value="selected" selected>Must be selected</option><option value="unselected">Must be unselected</option></select> 
                                     </p>
                                 </div>
-                                <!-- End of OpenText Panel -->
+                                <!-- End of MultipleChoice Panel -->
 
                                 <!-- End of answer part -->
                             </div>
@@ -81,8 +81,8 @@ function activateMulti(){
 }
 function addMulti(){
     var appendFields = '<p>';
-    appendFields += '<input type="text" name="answer" class="form-control">';
-    appendFields += '<select class="form-control"><option value="selected" selected>Must be selected</option><option value="unselected">Must be unselected</option></select>';
+    appendFields += '<input type="text" name="multianswer[]" class="form-control">';
+    appendFields += '<select name="multianswercheck[]" class="form-control"><option value="selected" selected>Must be selected</option><option value="unselected">Must be unselected</option></select>';
     appendFields += '</p>';
     $("#panelMulti").append(appendFields);
     i++;

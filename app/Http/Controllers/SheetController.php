@@ -50,6 +50,8 @@ class SheetController extends Controller
      */
     public function store(Request $request, Stack $stack)
     {
+        // $request->multianswer . 
+        return $request->multianswercheck;
         $sheet = new Sheet();
         $sheet->stack_id = $stack->id;
         $sheet->question = $request->question;
