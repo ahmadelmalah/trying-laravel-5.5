@@ -1,14 +1,23 @@
 ## Multiple Answers Feature
-
+Valdation:
+----------
 1-Revise validation on both client and server sides
 hint: you can make validation dynamic on client side
 front:when this tab is open required=false
 back:answer = "">return error message 
 
-apply the same with update, then preview on heroku
+Edit during creating a stack
+----------------------------
+Don't allow edit multipleoptios question, for now
 
-if OK
+General Testing
+---------------
+for any issue that may arrise
+and for UI issue on stack creating: long json appears >> we can solve by replacing jison with the number of options ie (3 options)
 
-Update checking function to deal with multiple questions
-1-special view based on checkboxes
-2-special check based on array status
+## Multiple Answers Feature
+Check new (managerial  board)
+
+## Calculator
+6 hrs pure
+8 hrs lux
