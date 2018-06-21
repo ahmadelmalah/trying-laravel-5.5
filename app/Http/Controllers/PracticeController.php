@@ -83,15 +83,29 @@ class PracticeController extends Controller
             $reveal = true;
         }
 
-        //Initial answer
-        $answer = "";
-        if($reveal == true){
-            $answer = $sheet->answer->answer;
+        //Sending answer's type, and answer itself if revealed
+        $answer_type = $sheet->answer->type;
+        $answer = ""; //can be anything based on type, and reveal
+        //Open Text
+        if($answer_type == 1){ 
+            if($reveal == true){
+                $answer = $sheet->answer->answer;
+            }
+        //Multiple Options
+        }elseif($answer_type == 2){
+            $answer = json_decode($sheet->answer->answer, true);
+            if($reveal == true){ 
+                //
+            }else{
+                //Hiding answers
+                $answer = array_map(function($name){return null;}, $answer);
+            }
         }
 
-        return view('practice', 
+        return view('practice.index', 
             [
                 'sheet' => $sheet,
+                'answer_type' => $answer_type,
                 'answer' => $answer,
                 'stack' => $stack,
                 'reveal' => $reveal,
