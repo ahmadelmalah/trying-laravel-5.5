@@ -22,25 +22,11 @@
                                 <h3 class="panel-title">{{ $sheet->question }}</h3>
                             </div>
                             <div class="panel-body">
-
-                                @if($reveal == true)
-                                <div class="input-group">
-                                    <input type="text" name="UserResponse" class="form-control" 
-                                    placeholder="Your Answer .." value="{{ $answer }}" disabled>
-                                    <span class="input-group-btn">
-                                        <a href="{{ route('practice', ['stack' => $stack->id]) }}" class="btn btn-primary">Ahh OK!</a>
-                                    </span>
-                                </div>
-                                @else
-                                <div class="input-group">
-                                    <input type="text" name="UserResponse" class="form-control" 
-                                    placeholder="Your Answer .." value="{{ $answer }}" autofocus="autofocus" autocomplete="off" required>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">Submit & Next</button>
-                                    </span>
-                                </div>
+                                @if($answer_type == 1)                                
+                                    @include('practice.type_opentext')
+                                @elseif($answer_type == 2)
+                                    @include('practice.type_multipleoptions')                    
                                 @endif
-
                             </div>
                             <div class="panel-footer">
                                 <div class="btn-group" role="group" aria-label="...">
