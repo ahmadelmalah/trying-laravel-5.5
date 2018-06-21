@@ -45,17 +45,35 @@ class PracticeController extends Controller
      *
      * @return Boolean
      */
-    public static function checkAnswer($response, $answer)
+    public static function checkAnswer($response, $answer, $type)
     {
-        //trim spaces
-        $response = trim($response);
-        $answer = trim($answer);
+        if($type ==  1){
+            //trim spaces
+            $response = trim($response);
+            $answer = trim($answer);
 
-        //convert both to lower
-        $response = strtolower($response);
-        $answer = strtolower($answer);
+            //convert both to lower
+            $response = strtolower($response);
+            $answer = strtolower($answer);
 
-        return $response == $answer;
+            return $response == $answer;
+        }else{
+            $answer = json_decode($answer, true);
+            if(is_null($response)) $response = array();
+
+            $index = 0;
+            foreach($answer as $key=>$option){
+                //Determning the correced choice based on the answer
+                $correct_choice = false;
+                if ($option == "selected") $correct_choice = true;
+                //checking process
+                $user_choice = in_array($index, $response);
+                if($user_choice != $correct_choice) return false;
+
+                $index++;
+            }
+            return true;
+        }
     }
 
     /**
@@ -123,8 +141,9 @@ class PracticeController extends Controller
     {
         $userResponse =  $request->get('UserResponse');
         $correctAnswer = Sheet::find($request->get('sheetID'))->answer->answer;
+        $correctAnswer_type = Sheet::find($request->get('sheetID'))->answer->type;
 
-        if ($this::checkAnswer($userResponse, $correctAnswer) == true){
+        if ($this::checkAnswer($userResponse, $correctAnswer, $correctAnswer_type) == true){
             SheetResponse::where('user_id', Auth::User()->id)
                         ->where('sheet_id', $request->get('sheetID'))
                         ->increment('correct');
