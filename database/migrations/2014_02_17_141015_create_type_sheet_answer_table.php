@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSheetsAnswersTypesTable extends Migration
+class CreateTypeSheetAnswerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSheetsAnswersTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sheets_answers_types', function (Blueprint $table) {
+        Schema::create('type_sheet_answer', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
         });
@@ -26,6 +26,6 @@ class CreateSheetsAnswersTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sheets_answers_types');
+        Schema::dropIfExists('type_sheet_answer');
     }
 }

@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         DB::table('type_stack')->insert(['id' => 2, 'name' => 'Private']);
         DB::table('type_stack')->insert(['id' => 3, 'name' => 'Public']);
 
-        DB::table('sheets_answers_types')->insert(['id' => 1, 'name' => 'Open Tex']);
-        DB::table('sheets_answers_types')->insert(['id' => 2, 'name' => 'Multiple Options']);
+        DB::table('type_sheet_answer')->insert(['id' => 1, 'name' => 'Open Text']);
+        DB::table('type_sheet_answer')->insert(['id' => 2, 'name' => 'Multiple Options']);
 
         //str_random(10)
         DB::table('users')->insert([

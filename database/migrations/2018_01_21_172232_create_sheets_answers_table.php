@@ -17,6 +17,8 @@ class CreateSheetsAnswersTable extends Migration
             $table->increments('id');
             $table->integer('sheet_id')->unsigned();
             $table->foreign('sheet_id')->references('id')->on('sheets')->onDelete('cascade');
+            $table->integer('type')->unsigned()->default(1);
+            $table->foreign('type')->references('id')->on('type_sheet_answer')->onDelete('cascade');
             $table->string('answer');
             $table->timestamps();
         });
