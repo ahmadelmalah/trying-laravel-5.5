@@ -52,8 +52,10 @@ class SheetController extends Controller
     {
         //Getting answer based on its type, open text or multiple choices
         if($request->answerType == "open"){
+            $answer_type = 1;
             $answer = $request->answer;
         }else if($request->answerType == "multi"){
+            $answer_type = 2;
             $answer = json_encode(array_combine($request->multianswer, $request->multianswercheck));
         }
 
@@ -64,6 +66,7 @@ class SheetController extends Controller
 
         $sheet_answer = new SheetAnswer();
         $sheet_answer->sheet_id = $sheet->id;
+        $sheet_answer->type = $answer_type;
         $sheet_answer->answer = $answer;
         $sheet_answer->save();
 
