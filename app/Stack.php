@@ -15,4 +15,9 @@ class Stack extends Model
     {
         return $this->belongsTo('App\TypeStack');
     }
+
+    public function creator()
+    {
+        return $this->belongsTo('App\User', 'created_by');
+    }
 }
