@@ -21,6 +21,7 @@
                   <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Activation Status</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -31,11 +32,20 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>
-                        <form style="display:inline;" method="POST" action="{{ route('home', ['user' => $user->id]) }}"
+                    @if($user->active == 1)
+                        Active
+                    @else
+                        Inactive
+                    @endif
+                    </td>
+                    <td>
+                        @if($user->active == 1 && $user->id !=1)
+                        <form style="display:inline;" method="POST" action="{{ route('user-destroy', ['user' => $user->id]) }}"
                             onsubmit="return confirm('Deactivate this user?');">
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-danger btn-sm" type="submit">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm" type="submit">Deactivate</button>
                         </form>
+                        @endif
                     </td>
                     </tr>
                 @endforeach
