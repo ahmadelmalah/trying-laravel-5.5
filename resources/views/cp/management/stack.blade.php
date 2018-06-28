@@ -37,7 +37,7 @@
                     <td>{{$stack->price}}</td>
                     <td>{{$stack->creator->name}}</td>
                     <td>
-                      <form style="display:inline;" method="POST" action="{{ route('home', ['stack' => $stack->id]) }}"
+                      <form style="display:inline;" method="POST" action="{{ route('stack-destroy', ['stack' => $stack->id]) }}"
                           onsubmit="return confirm('Delete this stack permanently?');">
                       {{ csrf_field() }}
                       <button type="submit" class="btn btn-danger btn-sm" type="submit">Delete</button>
