@@ -17,8 +17,8 @@ class CreateStacksTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->integer('type')->unsigned();
-            $table->foreign('type')->references('id')->on('type_stack');
+            $table->integer('type_id')->unsigned();
+            $table->foreign('type_id')->references('id')->on('type_stack');
             $table->double('price', 8, 2)->default(0);
             $table->integer('created_by')->unsigned();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');

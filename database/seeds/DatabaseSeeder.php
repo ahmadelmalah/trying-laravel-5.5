@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         DB::table('stacks')->insert([
             'name' => 'Test Stack 1',
             'description' => 'Stack Desciption',
-            'type' => 3,
+            'type_id' => 3,
             'created_by' => 1
         ]);
 
