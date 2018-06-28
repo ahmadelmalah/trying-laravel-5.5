@@ -16,9 +16,9 @@ class AdminController extends Controller
     public function index()
     {
         return view('cp.index', [
-            'stacks_under_dev' => Stack::where('type', 1)->count(),
-            'stacks_private' => Stack::where('type', 2)->count(),
-            'stacks_public' => Stack::where('type', 3)->count(),
+            'stacks_under_dev' => Stack::where('type_id', 1)->count(),
+            'stacks_private' => Stack::where('type_id', 2)->count(),
+            'stacks_public' => Stack::where('type_id', 3)->count(),
             'users' => User::all()->count(),
         ]);
     }
@@ -30,7 +30,9 @@ class AdminController extends Controller
      */
     public function indexUserManagement()
     {
-        return view('cp.management.user');
+        return view('cp.management.user', [
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -40,7 +42,9 @@ class AdminController extends Controller
      */
     public function indexStackManagement()
     {
-        return view('cp.management.stack');
+        return view('cp.management.stack', [
+            'stacks' => Stack::all()
+        ]);
     }
 
     /**
