@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('sheet-store', ['stack' => $stack->id]) }}">
+                    <form onsubmit="return multiValidation()" method="POST" action="{{ route('sheet-store', ['stack' => $stack->id]) }}">
                         {{ csrf_field() }}
                         <div class="panel panel-info">
                             <div class="panel-heading">
@@ -42,10 +42,11 @@
 
                                 <!-- OpenText Panel -->
                                 <div class="form-group" id="panelOpenText">
-                                    <input type="text" name="answer" class="form-control" 
-                                    placeholder="Sheet answer ..">
+                                    <input type="text" id="txtOpenText" name="answer" class="form-control" 
+                                    placeholder="Sheet answer .." required>
                                 </div>
                                 <!-- End of OpenText Panel -->
+
                                 <!-- MultipleChoice Panel -->
                                 <div class="form-group form-inline" id="panelMulti" style="display: none;">
                                 <p><button type="button" class="btn btn-default" onclick="addMulti()">More fields</button></p>
@@ -72,17 +73,17 @@
 </div>
 
 <script>
-i=1;
 function activateOpenText(){
     $("#panelOpenText").show()
     $("#panelMulti").hide()
     $("#answerType").val("open")
-    
+    $("#txtOpenText").attr("required", "required")
 }
 function activateMulti(){
     $("#panelOpenText").hide()
     $("#panelMulti").show()
     $("#answerType").val("multi")
+    $("#txtOpenText").removeAttr("required")
 }
 function addMulti(){
     var appendFields = '<p>';
@@ -90,7 +91,22 @@ function addMulti(){
     appendFields += '<select name="multianswercheck[]" class="form-control"><option value="selected" selected>Must be selected</option><option value="unselected">Must be unselected</option></select>';
     appendFields += '</p>';
     $("#panelMulti").append(appendFields);
-    i++;
+}
+
+function multiValidation(){
+    //should worl for multi-type only
+    if($("#answerType").val() != 'multi') return true;
+    
+    var multianswer = $('input[name^=multianswer]'); //all inputs start with this
+
+    //if an input is empty, return false;
+    var allGood = true;
+    [].forEach.call(multianswer, function(input) {
+        if (input.value.trim() == '')  allGood = false;
+    });
+
+    if(allGood == false) alert('please complete all the fields');
+    return allGood;
 }
 </script>
 
