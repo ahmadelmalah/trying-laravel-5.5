@@ -7,10 +7,49 @@
 @stop
 
 @section('content')
-    <p>Total Users: 0</p>
     <div class="row">
-        Users Table
-    </div>
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">All Users</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>
+                        <form style="display:inline;" method="POST" action="{{ route('home', ['user' => $user->id]) }}"
+                            onsubmit="return confirm('Deactivate this user?');">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-danger btn-sm" type="submit">Delete</button>
+                        </form>
+                    </td>
+                    </tr>
+                @endforeach
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+      </div>
+
 @stop
 
 @section('css')
