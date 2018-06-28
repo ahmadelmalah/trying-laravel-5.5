@@ -30,7 +30,7 @@ class AdminController extends Controller
      */
     public function indexUserManagement()
     {
-        return "indexUserManagement";
+        return view('cp.management.user');
     }
 
     /**
@@ -40,7 +40,7 @@ class AdminController extends Controller
      */
     public function indexStackManagement()
     {
-        return "indexStackManagement";
+        return view('cp.management.stack');
     }
 
     /**
