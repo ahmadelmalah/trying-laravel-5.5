@@ -36,7 +36,13 @@
                             <tr>
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$sheet->question}}</td>
-                                <td>{{$sheet->answer->answer}}</td>
+                                <td>
+                                    @if($sheet->answer->type == 1)
+                                        {{$sheet->answer->answer}}
+                                    @elseif($sheet->answer->type == 2)
+                                        [Array of {{ count(json_decode($sheet->answer->answer, true)) }} answers]
+                                    @endif
+                                </td>
                                 <td style="width: 140px;">
                                     <form style="display:inline;" method="GET" action="{{ route('sheet-edit', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}">
                                     <button type="submit" class="btn btn-info btn-sm" style="background-color: #5bc0de;" type="submit">Edit</button>
