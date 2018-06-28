@@ -37,11 +37,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('stack-is-updatable', function ($user, $stack) {
-            return $stack->type == 1;
+            return $stack->type->id == 1;
         });
 
         Gate::define('stack-be-public', function ($user, $stack) {
-            return $stack->type == 2;
+            return $stack->type->id == 2;
         });
 
         Gate::define('use-stack', function ($user, $stack) {

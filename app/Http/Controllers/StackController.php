@@ -57,7 +57,7 @@ class StackController extends Controller
     public function marketplace()
     {
         return view('marketplace', 
-            ['stacks' => Stack::where('type', 3)->get()]
+            ['stacks' => Stack::where('type_id', 3)->get()]
         );
     }
 
@@ -130,7 +130,7 @@ class StackController extends Controller
         $stack = new Stack;
         $stack->name = $request->name;
         $stack->description = $request->desc;
-        $stack->type = 1; // Under Development
+        $stack->type_id = 1; // Under Development
         $stack->price = $request->price;
         $stack->created_by = Auth::User()->id; 
         $stack->save();
@@ -151,7 +151,7 @@ class StackController extends Controller
                     ->with('error', 'Stack needs at least 3 sheets');
         }
         //Publishing
-        $stack->type = 2;
+        $stack->type_id = 2;
         $stack->save();
         //Assigning the stack to the user and fire the event
         DB::table('stack_user')->insert(['user_id' => Auth::User()->id,'stack_id' => $stack->id]);
@@ -169,7 +169,7 @@ class StackController extends Controller
      */
     public function makepublic(Request $request, Stack $stack)
     {
-        $stack->type = 3;
+        $stack->type_id = 3;
         $stack->save();
 
         return redirect()->route('my-stacks');

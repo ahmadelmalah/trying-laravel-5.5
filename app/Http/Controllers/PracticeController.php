@@ -102,7 +102,7 @@ class PracticeController extends Controller
         }
 
         //Sending answer's type, and answer itself if revealed
-        $answer_type = $sheet->answer->type;
+        $answer_type = $sheet->answer->type->id;
         $answer = ""; //can be anything based on type, and reveal
         //Open Text
         if($answer_type == 1){ 
@@ -141,7 +141,7 @@ class PracticeController extends Controller
     {
         $userResponse =  $request->get('UserResponse');
         $correctAnswer = Sheet::find($request->get('sheetID'))->answer->answer;
-        $correctAnswer_type = Sheet::find($request->get('sheetID'))->answer->type;
+        $correctAnswer_type = Sheet::find($request->get('sheetID'))->answer->type->id;
 
         if ($this::checkAnswer($userResponse, $correctAnswer, $correctAnswer_type) == true){
             SheetResponse::where('user_id', Auth::User()->id)

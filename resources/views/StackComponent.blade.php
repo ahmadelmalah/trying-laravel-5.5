@@ -20,7 +20,7 @@
             <button type="submit" class="btn btn-success" type="submit">Subscribe</button>
             </form>
         @endcan
-        @if($stack->type == 2 && $stack->created_by == Auth()->User()->id)
+        @if($stack->type->id == 2 && $stack->created_by == Auth()->User()->id)
             <form style="display:inline;" method="POST" action="{{ route('stack-makepublic', ['stack' => $stack->id]) }}"
                 onsubmit="return confirm('After publishing the stack you will not be able to return it to private, continue?');">
             {{ csrf_field() }}

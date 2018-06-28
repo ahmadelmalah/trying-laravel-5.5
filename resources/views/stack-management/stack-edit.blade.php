@@ -37,9 +37,9 @@
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$sheet->question}}</td>
                                 <td>
-                                    @if($sheet->answer->type == 1)
+                                    @if($sheet->answer->type_id == 1)
                                         {{$sheet->answer->answer}}
-                                    @elseif($sheet->answer->type == 2)
+                                    @elseif($sheet->answer->type_id == 2)
                                         [Array of {{ count(json_decode($sheet->answer->answer, true)) }} answers]
                                     @endif
                                 </td>
