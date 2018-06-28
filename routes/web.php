@@ -48,8 +48,6 @@ Route::post('/stack-clear/{stack}', 'StackController@clear')->name('stack-clear'
 //Admin Area
 Route::prefix('/cp')->middleware(['can:have-admin-auth'])->group(function () {
     Route::get('', 'AdminController@index');
-
-    Route::get('test', function () {
-        return "yes";
-    });
+    Route::get('user-management', 'AdminController@indexUserManagement');
+    Route::get('stack-management', 'AdminController@indexStackManagement');
 });

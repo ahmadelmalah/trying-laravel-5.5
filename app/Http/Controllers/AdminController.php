@@ -9,7 +9,7 @@ use App\Stack;
 class AdminController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display the main page in CP
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,6 +21,26 @@ class AdminController extends Controller
             'stacks_public' => Stack::where('type', 3)->count(),
             'users' => User::all()->count(),
         ]);
+    }
+
+    /**
+     * Display User Management Page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexUserManagement()
+    {
+        return "indexUserManagement";
+    }
+
+    /**
+     * Display Stack Management Page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexStackManagement()
+    {
+        return "indexStackManagement";
     }
 
     /**
