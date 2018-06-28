@@ -27,6 +27,7 @@ Route::get('/stack-create', 'StackController@create')->name('stack-create');
 Route::post('/stack-create', 'StackController@store')->name('stack-store');
 Route::get('/stack-edit/{stack}', 'StackController@edit')->name('stack-edit')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::post('/stack-edit/{stack}', 'StackController@publish')->name('stack-publish')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
+Route::post('/stack-delete/{stack}', 'StackController@destroy')->name('stack-destroy')->middleware('can:have-admin-auth');
 //Sheets
 Route::get('/sheet-create/{stack}', 'SheetController@create')->name('sheet-create')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::post('/sheet-create/{stack}', 'SheetController@store')->name('sheet-store')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
