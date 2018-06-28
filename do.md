@@ -1,3 +1,3 @@
 ## Calculator
-7.5 hrs pure
-9.5 hrs lux
+10 hrs pure
+13.5 hrs lux
