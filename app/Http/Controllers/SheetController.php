@@ -123,6 +123,6 @@ class SheetController extends Controller
     public function destroy(Stack $stack, Sheet $sheet)
     {
         Sheet::destroy($sheet->id);
-        return redirect()->route('stack-edit', ['stack' => $stack->id]);
+        return back();
     }
 }
