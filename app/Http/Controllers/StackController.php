@@ -270,8 +270,9 @@ class StackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Stack $stack)
     {
-        //
+        Stack::destroy($stack->id);
+        return back();
     }
 }
