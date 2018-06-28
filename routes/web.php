@@ -22,13 +22,16 @@ Route::get('/mystacks', 'StackController@getUserStacks')->name('my-stacks');
 Route::get('/marketplace', 'StackController@marketplace')->name('marketplace');
 Route::get('/subscriptions', 'StackController@subscriptions')->name('subscriptions');
 
-//Creating/updating stacks routes
+//User management routes
+Route::post('/user-deactivate/{user}', 'UserController@destroy')->name('user-destroy')->middleware('can:have-admin-auth');
+
+//Stack management routes
 Route::get('/stack-create', 'StackController@create')->name('stack-create');
 Route::post('/stack-create', 'StackController@store')->name('stack-store');
 Route::get('/stack-edit/{stack}', 'StackController@edit')->name('stack-edit')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::post('/stack-edit/{stack}', 'StackController@publish')->name('stack-publish')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::post('/stack-delete/{stack}', 'StackController@destroy')->name('stack-destroy')->middleware('can:have-admin-auth');
-//Sheets
+//Sheet management routes
 Route::get('/sheet-create/{stack}', 'SheetController@create')->name('sheet-create')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::post('/sheet-create/{stack}', 'SheetController@store')->name('sheet-store')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::get('/sheet-edit/{stack}/{sheet}', 'SheetController@edit')->name('sheet-edit')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
