@@ -10,4 +10,9 @@ class Stack extends Model
     {
         return $this->hasMany('App\Sheet');
     }
+
+    public function type()
+    {
+        return $this->belongsTo('App\TypeStack');
+    }
 }
