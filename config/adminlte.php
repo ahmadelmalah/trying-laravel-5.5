@@ -121,13 +121,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'User Management',
-                    'url'  => '#cp/user-management',
+                    'url'  => 'cp/user-management',
                     'icon' => 'user',
                 ],
                 [
                     'text' => 'Stack Management',
-                    'url'  => '#cp/stack-management',
-                    'icon'        => 'book',
+                    'url'  => 'cp/stack-management',
+                    'icon' => 'book',
                 ],
             ],
         ]
