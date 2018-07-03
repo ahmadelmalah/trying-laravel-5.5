@@ -1,7 +1,6 @@
 ## Link
 Milestones
 updating db
-manage links button
 manage links main page
 adding link
 removing link

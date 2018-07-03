@@ -44,14 +44,22 @@
                                     @endif
                                 </td>
                                 <td style="width: 140px;">
-                                    <form style="display:inline;" method="GET" action="{{ route('sheet-edit', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}">
-                                    <button type="submit" class="btn btn-info btn-sm" style="background-color: #5bc0de;" type="submit">Edit</button>
-                                    </form>
+                                    <div class="dropdown" style="display:inline;">
+                                        <button class="btn btn-info btn-sm dropdown-toggle" style="background-color: #5bc0de;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Edit
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="{{ route('sheet-edit', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}">Sheet & Answer</a></li>
+                                        <li><a href="#">Attached links</a></li>
+                                        </ul>
+                                    </div>
                                     <form style="display:inline;" method="POST" action="{{ route('sheet-destroy', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}"
                                         onsubmit="return confirm('Delete this sheet?');">
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-danger btn-sm" type="submit">Delete</button>
                                     </form>
+
                                 </td>
                             </tr>
                             @endforeach
