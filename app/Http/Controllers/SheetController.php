@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Stack;
 use App\Sheet;
 use App\SheetAnswer;
+use App\SheetLink;
 
 class SheetController extends Controller
 {
@@ -138,6 +139,18 @@ class SheetController extends Controller
     public function destroy(Stack $stack, Sheet $sheet)
     {
         Sheet::destroy($sheet->id);
+        return back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy_link(Stack $stack, Sheet $sheet, SheetLink $sheetlink)
+    {
+        SheetLink::destroy($sheetlink->id);
         return back();
     }
 }

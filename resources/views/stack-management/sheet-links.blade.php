@@ -37,7 +37,7 @@
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$link->url}}</td>
                                 <td style="width: 140px;">
-                                    <form style="display:inline;" method="POST" action="{{ route('sheet-destroy', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}"
+                                    <form style="display:inline;" method="POST" action="{{ route('sheet-link-destroy', ['stack' => $stack->id, 'sheet' => $sheet->id, 'link' => $link->id]) }}"
                                         onsubmit="return confirm('Delete this link?');">
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-danger btn-sm" type="submit">Delete</button>

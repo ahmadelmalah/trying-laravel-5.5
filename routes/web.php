@@ -38,6 +38,8 @@ Route::get('/sheet-edit/{stack}/{sheet}', 'SheetController@edit')->name('sheet-e
 Route::get('/sheet-links/{stack}/{sheet}', 'SheetController@showLinks')->name('sheet-links')->middleware('can:update-stack,stack');
 Route::put('/sheet-update/{stack}/{sheet}', 'SheetController@update')->name('sheet-update')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::post('/sheet-delete/{stack}/{sheet}', 'SheetController@destroy')->name('sheet-destroy')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
+//the next route should be in a separete controller that control links
+Route::post('/sheet-link-delete/{stack}/{sheet}/{sheetlink}', 'SheetController@destroy_link')->name('sheet-link-destroy')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 
 //Sharing & searching stacks
 Route::post('/stack-makepublic/{stack}', 'StackController@makepublic')->name('stack-makepublic')->middleware('can:update-stack,stack')->middleware('can:stack-be-public,stack');
