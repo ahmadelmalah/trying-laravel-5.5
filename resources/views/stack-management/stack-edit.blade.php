@@ -51,7 +51,7 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                         <li><a href="{{ route('sheet-edit', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}">Sheet & Answer</a></li>
-                                        <li><a href="#">Attached links</a></li>
+                                        <li><a href="{{ route('sheet-links', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}">Attached links</a></li>
                                         </ul>
                                     </div>
                                     <form style="display:inline;" method="POST" action="{{ route('sheet-destroy', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}"
