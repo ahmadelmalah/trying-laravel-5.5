@@ -1,9 +1,3 @@
-## Non-functional
-fill data that show in CP
-take 3 screen shots
-send them with decent text
-expecting deployment in few days
-
 ## Link
 Milestones
 updating db
