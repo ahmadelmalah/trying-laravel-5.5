@@ -35,6 +35,7 @@ Route::post('/stack-delete/{stack}', 'StackController@destroy')->name('stack-des
 Route::get('/sheet-create/{stack}', 'SheetController@create')->name('sheet-create')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::post('/sheet-create/{stack}', 'SheetController@store')->name('sheet-store')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::get('/sheet-edit/{stack}/{sheet}', 'SheetController@edit')->name('sheet-edit')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
+Route::get('/sheet-links/{stack}/{sheet}', 'SheetController@showLinks')->name('sheet-links')->middleware('can:update-stack,stack');
 Route::put('/sheet-update/{stack}/{sheet}', 'SheetController@update')->name('sheet-update')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 Route::post('/sheet-delete/{stack}/{sheet}', 'SheetController@destroy')->name('sheet-destroy')->middleware('can:update-stack,stack')->middleware('can:stack-is-updatable,stack');
 

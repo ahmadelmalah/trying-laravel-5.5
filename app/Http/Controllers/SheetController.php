@@ -99,6 +99,21 @@ class SheetController extends Controller
     }
 
     /**
+     * Show links page
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showLinks(Stack $stack, Sheet $sheet)
+    {
+        return view('stack-management/sheet-links', [
+            'stack' => $stack,
+            'sheet' => $sheet,
+            'links' => $sheet->links
+        ]);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
