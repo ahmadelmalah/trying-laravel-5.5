@@ -75,6 +75,21 @@ class SheetController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store_link(Request $request, Stack $stack, Sheet $sheet)
+    {
+        $sheet_link = new SheetLink();
+        $sheet_link->sheet_id = $sheet->id;
+        $sheet_link->url = $request->url;
+        $sheet_link->save();
+        return redirect()->back();
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

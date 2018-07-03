@@ -25,7 +25,12 @@
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
-                            <a href="{{ route('sheet-create', ['stack' => $stack->id]) }}" class="btn btn-primary btn-block">Add new link</a>
+                        <form style="display:inline;" method="POST" action="{{ route('sheet-link-store', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}">                        
+                            <input type="text" name="url" class="form-control" placeholder="http://" aria-describedby="basic-addon1" required>
+                            <button type="submit" class="btn btn-primary btn-block" type="submit">Add new link</button>
+                            {{ csrf_field() }}
+                        </form>
+                            
                         </div>
 
                         <!-- Table -->
@@ -51,10 +56,7 @@
 
                         <div class="panel-footer">
                             <span class="input-group-btn">
-                                <form method="POST" action="">
-                                {{ csrf_field() }}
                                 <a href="{{ route('stack-edit', ['stack' => $stack->id]) }}" class="btn btn-success btn-block">The attachments are now ready!</a>
-                                </form>
                             </span>
                         </div>
                     </div>
