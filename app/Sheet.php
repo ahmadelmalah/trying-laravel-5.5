@@ -15,4 +15,9 @@ class Sheet extends Model
     {
         return $this->hasOne('App\SheetAnswer');
     }
+
+    public function links()
+    {
+        return $this->hasMany('App\SheetLink');
+    }
 }
