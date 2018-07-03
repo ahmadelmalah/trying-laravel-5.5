@@ -1,13 +1,8 @@
 ## Link
-Milestones
-updating db
-manage links main page
-adding link
-removing link
-shoing resources box on student page
-obtmization (want to leave ti this link?)
-then deploy
+Showing resources box on student page
+Obtmization (security warnning: want to leave out to this link?)
+Deployment
 
 ## Calculator
-11 hrs pure
-15 hrs lux
+12.5 hrs pure
+17 hrs lux
