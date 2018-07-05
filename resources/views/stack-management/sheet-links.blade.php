@@ -26,6 +26,7 @@
                         <!-- Default panel contents -->
                         <div class="panel-heading">
                         <form style="display:inline;" method="POST" action="{{ route('sheet-link-store', ['stack' => $stack->id, 'sheet' => $sheet->id]) }}">                        
+                            <input type="text" name="caption" class="form-control" placeholder="Caption" aria-describedby="basic-addon1" required>
                             <input type="text" name="url" class="form-control" placeholder="http://" aria-describedby="basic-addon1" required>
                             <button type="submit" class="btn btn-primary btn-block" type="submit">Add new link</button>
                             {{ csrf_field() }}
@@ -35,12 +36,12 @@
 
                         <!-- Table -->
                         <table class="table">
-                        <thead> <tr> <th>#</th> <th>URL</th> <th></th></tr></thead>
+                        <thead> <tr> <th>#</th> <th>Caption</th> <th></th></tr></thead>
                         <tbody>
                             @foreach ($links as $link)
                             <tr>
                                 <td>{{$loop->index+1}}</td>
-                                <td>{{$link->url}}</td>
+                                <td>{{$link->caption}}</td>
                                 <td style="width: 140px;">
                                     <form style="display:inline;" method="POST" action="{{ route('sheet-link-destroy', ['stack' => $stack->id, 'sheet' => $sheet->id, 'link' => $link->id]) }}"
                                         onsubmit="return confirm('Delete this link?');">

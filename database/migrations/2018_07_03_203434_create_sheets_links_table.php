@@ -17,6 +17,7 @@ class CreateSheetsLinksTable extends Migration
             $table->increments('id');
             $table->integer('sheet_id')->unsigned();
             $table->foreign('sheet_id')->references('id')->on('sheets')->onDelete('cascade');
+            $table->string('caption');
             $table->string('url');
             $table->timestamps();
         });

@@ -84,6 +84,7 @@ class SheetController extends Controller
     {
         $sheet_link = new SheetLink();
         $sheet_link->sheet_id = $sheet->id;
+        $sheet_link->caption = $request->caption;
         $sheet_link->url = $request->url;
         $sheet_link->save();
         return redirect()->back();
