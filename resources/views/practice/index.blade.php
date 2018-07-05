@@ -19,7 +19,16 @@
                         <input type="hidden" name="sheetID" value="{{ $sheet->id }}" />
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h3 class="panel-title">{{ $sheet->question }}</h3>
+                                <h3 class="panel-title">
+                                    {{ $sheet->question }}
+                                    @if(count($sheet->links) > 0)
+                                        <hr style="border-width: 3px;" />
+                                        @foreach($sheet->links as $link)
+                                            <a target="_blank" href="{{$link->url}}">{{$loop->index+1}}. {{$link->caption}}</a>
+                                            <br />
+                                        @endforeach
+                                    @endif
+                                </h3>
                             </div>
                             <div class="panel-body">
                                 @if($answer_type == 1)                                
